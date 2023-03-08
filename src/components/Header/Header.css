@@ -1,6 +1,9 @@
 .header {
     background: #496DDB;
-    padding: 20px calc(50% - 500px) 10px;
+    padding: .5rem 0;
+    align-items: center;
+    display: flex;
+    justify-content:space-between;
 }
 
 .header__title {
@@ -9,3 +12,29 @@
     font-size: 45px;
     margin-left: 40px;
 }
+
+
+.headerLeft, .headerRight {
+    display: flex;
+    align-items: center;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.headerLeft a {
+    margin: 0 30px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #FFEEDB;
+    padding: 5px 0;
+    font-weight: 700;
+}
+
+
+.headerLeft a:hover {
+    color: red;
+}
+

@@ -79,7 +79,7 @@ const MoviePage = () => {
 				}
 			</div>
 			)
-		</div>) : <p> error</p>}</>
+		</div>) : <p> Loading</p>}</>
 
 
 	)

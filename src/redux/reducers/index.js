@@ -1,8 +1,17 @@
-import {ADD_TO_FAV, FAV_LIST_NAME, FETCH_DATA, GET_FILM, GET_SEARCH, REMOVE_FAV} from "../actionTypes";
+import {
+	ADD_TO_FAV,
+	FAV_LIST_NAME,
+	FETCH_DATA,
+	GET_FILM,
+	GET_POPULAR_MOVIES,
+	GET_SEARCH,
+	REMOVE_FAV
+} from "../actionTypes";
 import {combineReducers} from "redux";
 
 const ITITIAL_MOVIES = {
 	movies: [],
+	popularMovies: [],
 	favorites: [],
 	movie: {},
 	favlistName: ''
@@ -19,6 +28,11 @@ export const reducerMovies = (state = ITITIAL_MOVIES, action) => {
 			return {
 				...state,
 				movies: action.payload.results
+			}
+		case GET_POPULAR_MOVIES:
+			return {
+				...state,
+				popularMovies: [...state.popularMovies, ...action.payload.results]
 			}
 		case ADD_TO_FAV:
 			return {
