@@ -2,16 +2,20 @@ import {
 	ADD_TO_FAV,
 	FAV_LIST_NAME,
 	FETCH_DATA,
-	GET_FILM,
+	GET_FILM, GET_NOW_PLAYING_MOVIES,
 	GET_POPULAR_MOVIES,
-	GET_SEARCH,
+	GET_SEARCH, GET_TOP_RATED_MOVIES, GET_UPCOMING_MOVIES,
 	REMOVE_FAV
 } from "../actionTypes";
 import {combineReducers} from "redux";
 
 const ITITIAL_MOVIES = {
-	movies: [],
+	searchedMovies: [],
 	popularMovies: [],
+	nowPlayingMovies: [],
+	upcomingMovies: [],
+	topRatedMovies: [],
+	moviesListTitle: 'Loading...',
 	favorites: [],
 	movie: {},
 	favlistName: ''
@@ -19,20 +23,34 @@ const ITITIAL_MOVIES = {
 
 export const reducerMovies = (state = ITITIAL_MOVIES, action) => {
 	switch (action.type) {
-		case FETCH_DATA:
-			return {
-				...state,
-				movies: action.payload
-			}
 		case GET_SEARCH:
 			return {
 				...state,
-				movies: action.payload.results
+				searchedMovies: action.payload.results
 			}
 		case GET_POPULAR_MOVIES:
 			return {
 				...state,
-				popularMovies: [...state.popularMovies, ...action.payload.results]
+				popularMovies: [...state.popularMovies].find(movie => movie.id === action.payload.results[0].id) ? [...state.popularMovies] : [...state.popularMovies, ...action.payload.results],
+				moviesListTitle: 'Popular Movies'
+			}
+		case GET_NOW_PLAYING_MOVIES:
+			return {
+				...state,
+				nowPlayingMovies: [...state.nowPlayingMovies].find(movie => movie.id === action.payload.results[0].id) ? [...state.nowPlayingMovies] : [...state.nowPlayingMovies, ...action.payload.results],
+				moviesListTitle: 'Now Playing'
+			}
+		case GET_UPCOMING_MOVIES:
+			return {
+				...state,
+				upcomingMovies: [...state.upcomingMovies].find(movie => movie.id === action.payload.results[0].id) ? [...state.upcomingMovies] : [...state.upcomingMovies, ...action.payload.results],
+				moviesListTitle: 'Upcoming Movies'
+			}
+		case GET_TOP_RATED_MOVIES:
+			return {
+				...state,
+				topRatedMovies: [...state.topRatedMovies].find(movie => movie.id === action.payload.results[0].id) ? [...state.topRatedMovies] : [...state.topRatedMovies, ...action.payload.results],
+				moviesListTitle: 'Top Rated Movies'
 			}
 		case ADD_TO_FAV:
 			return {

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './SearchBox.css';
 import {useDispatch} from "react-redux";
-import {fetchData} from "../../redux/actions";
+import { fetchSearch} from "../../redux/actions";
 
 const SearchBox = () => {
 
@@ -14,7 +14,7 @@ const SearchBox = () => {
 
 	const searchBoxSubmitHandler = (e) => {
 		e.preventDefault();
-		dispatch(fetchData(searchLine))
+		dispatch(fetchSearch(searchLine))
 		setSearchLine('')
 
 	}

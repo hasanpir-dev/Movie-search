@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react"
 import "./MovieCard.css"
 import { Link } from "react-router-dom"
+import {useSelector} from "react-redux";
+import rootReducer from "../../redux/reducers";
 
 const MovieCard = (movie) => {
 

@@ -8,7 +8,6 @@ const MovieItem = (props) => {
 	const {title, release_date, poster_path, overview, id, vote_average} = props;
 	const poster = poster_path && `https://image.tmdb.org/t/p/w220_and_h330_face${poster_path}`
 	const dispatch = useDispatch()
-	console.log(props)
 
 	const addFavorites = () => {
 		dispatch(addToFav({title, release_date, poster_path, overview, id}))

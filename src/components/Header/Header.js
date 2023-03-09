@@ -14,9 +14,11 @@ const Header = () => {
 			</Link>
 			<div className="header">
 				<div className="headerLeft">
-					<Link to="/popular-movies" style={{textDecoration: "none"}}>Popular</Link>
-					<Link to="/" style={{textDecoration: "none"}}>Top Rated</Link>
-					<Link to="/" style={{textDecoration: "none"}}>Upcoming</Link>
+					<Link to="/movies/popular" style={{textDecoration: "none"}}>Popular</Link>
+					<Link to="/movies/now_playing" style={{textDecoration: "none"}}>Now Playing</Link>
+					<Link to="/movies/upcoming" style={{textDecoration: "none"}}>Upcoming</Link>
+					<Link to="/movies/top_rated" style={{textDecoration: "none"}}>Top Rated</Link>
+					<Link to="/search" style={{textDecoration: "none"}}>Search</Link>
 				</div>
 			</div>
 		</header>

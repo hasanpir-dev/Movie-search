@@ -1,23 +1,23 @@
 import React from 'react';
-import './MainPage.css';
+import './SearchPage.css';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Movies from '../../components/Movies/Movies';
 import Favorites from '../../components/Favorites/Favorites';
 
-const MainPage = () => {
+const SearchPage = () => {
 
 	return (
-		<div className="main-page">
-			<main className="main-page__content">
-				<section className="main-page__main-section">
-					<div className="main-page__search-box">
+		<div className="search-page">
+			<main className="search-page__content">
+				<section className="search-page__main-section">
+					<div className="search-page__search-box">
 						<SearchBox/>
 					</div>
-					<div className="main-page__movies">
+					<div className="search-page__movies">
 						<Movies/>
 					</div>
 				</section>
-				<aside className="main-page__favorites">
+				<aside className="search-page__favorites">
 					<Favorites/>
 				</aside>
 			</main>
@@ -26,4 +26,4 @@ const MainPage = () => {
 
 }
 
-export default MainPage;
+export default SearchPage;
