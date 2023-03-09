@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 import "./moviePage.css"
 
 const MoviePage = () => {
-	const [movie, setMovie] = useState({title: ''})
-	const {id} = useParams()
+	const [movie, setMovie] = useState({ title: '' })
+	const { id } = useParams()
 
 	useEffect(() => {
 		getData()
@@ -25,13 +25,13 @@ const MoviePage = () => {
 		<>{movie.title ? (<div className="movie">
 			<div className="movie__intro">
 				<img className="movie__backdrop"
-					 src={`https://image.tmdb.org/t/p/original${movie ? movie.backdrop_path : ""}`}/>
+					src={`https://image.tmdb.org/t/p/original${movie ? movie.backdrop_path : ""}`} alt='' />
 			</div>
 			<div className="movie__detail">
 				<div className="movie__detailLeft">
 					<div className="movie__posterBox">
 						<img className="movie__poster"
-							 src={`https://image.tmdb.org/t/p/original${movie ? movie.poster_path : ""}`}/>
+							src={`https://image.tmdb.org/t/p/original${movie ? movie.poster_path : ""}`} alt='' />
 					</div>
 				</div>
 				<div className="movie__detailRight">
@@ -50,8 +50,8 @@ const MoviePage = () => {
 							{
 								movie && movie.genres
 									?
-									movie.genres.map((genre, index) => (
-										<span key={index} className="movie__genre" id={genre.id}>{genre.name}</span>
+									movie.genres.map((genre) => (
+										<span key={genre.name} className="movie__genre" id={genre.id}>{genre.name}</span>
 									))
 									:
 									""
@@ -69,13 +69,13 @@ const MoviePage = () => {
 				<div className="movie__heading">For more information</div>
 				{
 					movie && movie.homepage &&
-					<a href={movie.homepage} target="_blank" style={{textDecoration: "none"}}><p><span
+					<a href={movie.homepage} target="_blank" style={{ textDecoration: "none" }}><p><span
 						className="movie__homeButton movie__Button">Movie Page</span></p></a>
 				}
 				{
 					movie && movie.imdb_id && <a href={"https://www.imdb.com/title/" + movie.imdb_id} target="_blank"
-												 style={{textDecoration: "none"}}><p><span
-						className="movie__imdbButton movie__Button">IMDb</span></p></a>
+						style={{ textDecoration: "none" }}><p><span
+							className="movie__imdbButton movie__Button">IMDb</span></p></a>
 				}
 			</div>
 			)

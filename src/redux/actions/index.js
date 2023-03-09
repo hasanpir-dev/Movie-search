@@ -33,7 +33,7 @@ export const fetchSearch = (title) => {
 
 }
 
-export const FetchFilm = ({id}) => {
+export const FetchFilm = ({ id }) => {
 	return async (dispatch) => {
 		try {
 
@@ -55,7 +55,7 @@ export const FetchFilm = ({id}) => {
 	}
 }
 
-export const FetchPopularMovies = ({page,type}) => {
+export const FetchPopularMovies = ({ page, type }) => {
 	return async (dispatch) => {
 		try {
 			const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
@@ -66,14 +66,14 @@ export const FetchPopularMovies = ({page,type}) => {
 			})
 		} catch (error) {
 
-		console.error(error, 'Please wait')
+			console.error(error, 'Please wait')
 
-	}
+		}
 	}
 }
 
 
-export const FetchNowPlayingMovies = ({page,type}) => {
+export const FetchNowPlayingMovies = ({ page, type }) => {
 	return async (dispatch) => {
 		try {
 			const response = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}&language=en-US&page=${page}`)
@@ -89,7 +89,7 @@ export const FetchNowPlayingMovies = ({page,type}) => {
 		}
 	}
 }
-export const FetchUpcomingMovies = ({page,type}) => {
+export const FetchUpcomingMovies = ({ page, type }) => {
 	return async (dispatch) => {
 		try {
 			const response = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}&language=en-US&page=${page}`)
@@ -106,7 +106,7 @@ export const FetchUpcomingMovies = ({page,type}) => {
 	}
 }
 
-export const FetchTopRatedMovies = ({page,type}) => {
+export const FetchTopRatedMovies = ({ page, type }) => {
 	return async (dispatch) => {
 		try {
 			const response = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}&language=en-US&page=${page}`)

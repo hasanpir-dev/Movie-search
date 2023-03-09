@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {FetchNowPlayingMovies, FetchPopularMovies, FetchTopRatedMovies, FetchUpcomingMovies} from "../../redux/actions";
+import React, { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchNowPlayingMovies, FetchPopularMovies, FetchTopRatedMovies, FetchUpcomingMovies } from "../../redux/actions";
 import './MoviesPage.css';
 
 import MovieCard from "../../components/MovieCard/MovieCard";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const MoviesPage =()=> {
+const MoviesPage = () => {
 
 	const dispatch = useDispatch();
 	const popularMovies = useSelector(store => store.reducerMovies.popularMovies);
@@ -15,34 +15,16 @@ const MoviesPage =()=> {
 	const topRatedMovies = useSelector(store => store.reducerMovies.topRatedMovies);
 	const moviesTitle = useSelector(store => store.reducerMovies.moviesListTitle)
 
-	let Movies ;
-	const {type} = useParams()
+	let Movies;
+	const { type } = useParams()
 	const [page, setPage] = useState(1)
 	const [loading, setLoading] = useState(true)
 
 
-
-	const getPopular = () => {
-		dispatch(FetchPopularMovies({page, type}));
-		return Movies = popularMovies;
-	}
-
-	const getNowPlaying = () => {
-		dispatch(FetchNowPlayingMovies({page, type}))
-	}
-
-	const getUpcoming = () => {
-		dispatch(FetchUpcomingMovies({page, type}))
-	}
-
-	const getTopRated = () => {
-		dispatch(FetchTopRatedMovies({page, type}))
-	}
-
 	const handleScroll = () => {
-		if(window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) {
+		if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) {
 			setLoading(true)
-			setPage(prev => prev +1 )
+			setPage(prev => prev + 1)
 		}
 	}
 
@@ -53,18 +35,36 @@ const MoviesPage =()=> {
 		};
 	}, []);
 
+	const getPopular = useCallback(() => {
+		dispatch(FetchPopularMovies({ page, type }));
+	}, [dispatch, page, type]);
+
+	const getNowPlaying = useCallback(() => {
+		dispatch(FetchNowPlayingMovies({ page, type }));
+	}, [dispatch, page, type]);
+
+	const getUpcoming = useCallback(() => {
+		dispatch(FetchUpcomingMovies({ page, type }));
+	}, [dispatch, page, type]);
+
+	const getTopRated = useCallback(() => {
+		dispatch(FetchTopRatedMovies({ page, type }));
+	}, [dispatch, page, type]);
+
 	useEffect(() => {
 		if (type === 'popular') {
-			getPopular()
+			getPopular();
 		} else if (type === 'now_playing') {
-			getNowPlaying()
+			getNowPlaying();
 		} else if (type === 'upcoming') {
-			getUpcoming()
+			getUpcoming();
 		} else if (type === 'top_rated') {
-			getTopRated()
+			getTopRated();
 		}
 		setLoading(false);
-	},[page,type])
+	}, [getPopular, getNowPlaying, getUpcoming, getTopRated, type, page]);
+
+	console.log('Loading')
 
 	const renderMovies = () => {
 		if (type === 'popular') {
@@ -77,12 +77,12 @@ const MoviesPage =()=> {
 			Movies = topRatedMovies;
 		}
 
-	 return (
-		 Movies.map((movie,index) => (
-				 <div className="movies__item" key={movie.id}>
-					 <MovieCard {...movie} />
-				 </div>
-			 )))
+		return (
+			Movies.map((movie) => (
+				<div className="movies__item" key={movie.id}>
+					<MovieCard {...movie} />
+				</div>
+			)))
 	}
 
 
@@ -92,7 +92,7 @@ const MoviesPage =()=> {
 			<div className="list__card">
 				{renderMovies()}
 				{loading ? <div>Loading</div> : null}
-		</div>
+			</div>
 		</div>
 	);
 

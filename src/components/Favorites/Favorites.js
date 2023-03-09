@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Favorites.css';
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ListItem from "./ListItem";
-import {Link, useNavigate} from "react-router-dom";
-import {favListName} from "../../redux/actions";
+import { Link } from "react-router-dom";
+import { favListName } from "../../redux/actions";
 
 
 const Favorites = () => {
@@ -30,9 +30,9 @@ const Favorites = () => {
 		<div className="favorites">
 			<form>
 				<input value={searchFav}
-					   placeholder="Новый список"
-					   className="favorites__name"
-					   onChange={searchFavChangeHandler}
+					placeholder="Новый список"
+					className="favorites__name"
+					onChange={searchFavChangeHandler}
 				/>
 				<ul className="favorites__list">
 					{movieFavorites.map((movie) => {

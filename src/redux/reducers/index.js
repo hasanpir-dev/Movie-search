@@ -1,13 +1,12 @@
 import {
 	ADD_TO_FAV,
 	FAV_LIST_NAME,
-	FETCH_DATA,
 	GET_FILM, GET_NOW_PLAYING_MOVIES,
 	GET_POPULAR_MOVIES,
 	GET_SEARCH, GET_TOP_RATED_MOVIES, GET_UPCOMING_MOVIES,
 	REMOVE_FAV
 } from "../actionTypes";
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 
 const ITITIAL_MOVIES = {
 	searchedMovies: [],
@@ -57,7 +56,7 @@ export const reducerMovies = (state = ITITIAL_MOVIES, action) => {
 				...state,
 				favorites: [...state.favorites].find(movie => movie.id === action.payload.id) ? [...state.favorites] : [...state.favorites, action.payload]
 			}
-		case  REMOVE_FAV:
+		case REMOVE_FAV:
 			return {
 				...state,
 				favorites: [...state.favorites.filter(movie => movie.id !== action.payload.id)]
@@ -79,5 +78,5 @@ export const reducerMovies = (state = ITITIAL_MOVIES, action) => {
 
 }
 
-const rootReducer = combineReducers({reducerMovies});
+const rootReducer = combineReducers({ reducerMovies });
 export default rootReducer;

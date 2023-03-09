@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './SearchBox.css';
 import {useDispatch} from "react-redux";
 import { fetchSearch} from "../../redux/actions";
