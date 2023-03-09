@@ -58,7 +58,7 @@ export const FetchFilm = ({ id }) => {
 export const FetchPopularMovies = ({ page, type }) => {
 	return async (dispatch) => {
 		try {
-			const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
+			const response = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}&language=en-US&page=${page}`)
 			const popularMovies = await response.json()
 			dispatch({
 				type: GET_POPULAR_MOVIES,
