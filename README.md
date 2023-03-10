@@ -1,3 +1,7 @@
+Movie app Api with React, Redux, Redux Thunk..
+used TheMoviedb Api
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
