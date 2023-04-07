@@ -1,6 +1,9 @@
 Movie app Api with React, Redux, Redux Thunk..
 used TheMoviedb Api
 
+https://movie-react-redux.onrender.com/
+
+
 
 # Getting Started with Create React App
 
